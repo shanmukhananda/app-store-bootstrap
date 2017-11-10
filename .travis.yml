@@ -1,0 +1,12 @@
+sudo: required
+services:
+  - docker
+before_install:
+  - chmod -R 777 *
+script:
+  - docker build --compress --tag=$DOCKER_USER/app-store:$TRAVIS_BUILD_NUMBER --file docker/linux-x64/Dockerfile .
+after_success:
+  - docker login --username $DOCKER_USER --password $DOCKER_PASS
+  - if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]]; then 
+      docker push $DOCKER_USER/app-store:$TRAVIS_BUILD_NUMBER; 
+    fi
