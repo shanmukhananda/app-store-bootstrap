@@ -4,10 +4,12 @@ services:
 before_install:
   - chmod -R 777 *
 script:
-  - docker build --compress --tag=$DOCKER_USER/app-store:$TRAVIS_BUILD_NUMBER --tag=$DOCKER_USER/app-store:latest --file=docker/linux-x64/Dockerfile .
+  - export TAG1=$DOCKER_USER/app-store:$TRAVIS_BUILD_NUMBER
+  - export TAG2=$DOCKER_USER/app-store:latest
+  - docker build --compress --tag=$TAG1 --tag=$TAG2 --file=docker/Dockerfile .
 after_success:
   - docker login --username $DOCKER_USER --password $DOCKER_PASS
   - if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]]; then 
-      docker push $DOCKER_USER/app-store:$TRAVIS_BUILD_NUMBER; 
-      docker push $DOCKER_USER/app-store:latest; 
+      docker push $TAG1; 
+      docker push $TAG2; 
     fi

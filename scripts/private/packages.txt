@@ -1,0 +1,13 @@
+build-essential
+clang
+cmake
+freeglut3-dev
+git
+libboost-all-dev
+libceres-dev
+libjsoncpp-dev
+libopencv-contrib-dev
+libopencv-dev
+qt5-default
+qttools5-dev-tools
+wget
