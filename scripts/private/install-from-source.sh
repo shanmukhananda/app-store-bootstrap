@@ -31,9 +31,13 @@ download_file() {
 download_packages() {
     googletest_url=https://github.com/google/googletest/archive/release-1.8.0.tar.gz
     oclint_url=https://github.com/oclint/oclint/releases/download/v0.13/oclint-0.13-x86_64-linux-4.4.0-93-generic.tar.gz
+    opencv_url=https://github.com/opencv/opencv/archive/3.3.1.tar.gz
+    opencv_contrib_url=https://github.com/opencv/opencv_contrib/archive/3.3.1.tar.gz
 
     download_file googletest ${googletest_url}
     download_file oclint ${oclint_url}
+    download_file opencv ${opencv_url}
+    download_file opencv_contrib ${opencv_contrib_url}
 }
 
 install_googletest() {
@@ -71,9 +75,40 @@ install_oclint() {
     cp -vrf lib ${install_dir}
 }
 
+install_cv() {
+    cd ${packages_dir}
+    opencv=opencv-3.3.1
+    archive_file_opencv=3.3.1.tar.gz
+    opencv_contrib=opencv_contrib-3.3.1
+
+    if [ ! -e ${opencv} ]
+    then
+        mkdir -p ${opencv}
+        tar xzf opencv/${archive_file_opencv} --directory=${opencv} --strip-components=1
+    fi
+
+    if [ ! -e ${opencv_contrib} ]
+    then
+        mkdir -p ${opencv_contrib}
+        tar xzf opencv_contrib/${archive_file_opencv} --directory=${opencv_contrib} --strip-components=1
+    fi
+
+    mkdir -p cv_release
+    cd cv_release
+    cmake \
+    -D CMAKE_BUILD_TYPE=release \
+    -D WITH_VTK=ON \
+    -D OPENCV_EXTRA_MODULES_PATH=../${opencv_contrib}/modules \
+    ../${opencv}
+
+    make -j${cores}
+    make install
+}
+
 install_packages() {
     install_googletest
     install_oclint
+    install_cv
 }
 
 # script starts here
