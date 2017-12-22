@@ -95,11 +95,16 @@ install_cv() {
 
     mkdir -p cv_release
     cd cv_release
-    cmake \
-    -D CMAKE_BUILD_TYPE=release \
-    -D WITH_VTK=ON \
-    -D OPENCV_EXTRA_MODULES_PATH=../${opencv_contrib}/modules \
-    ../${opencv}
+
+	cmake \
+        -D CMAKE_BUILD_TYPE=Release \
+        -D CMAKE_INSTALL_PREFIX=${install_dir} \
+        -D WITH_TBB=ON \
+        -D WITH_V4L=ON \
+        -D WITH_QT=ON \
+        -D WITH_OPENGL=ON \
+        -D OPENCV_EXTRA_MODULES_PATH=../${opencv_contrib}/modules \
+        ../${opencv}
 
     make -j${cores}
     make install

@@ -6,8 +6,6 @@ git
 libboost-all-dev
 libceres-dev
 libjsoncpp-dev
-libopencv-contrib-dev
-libopencv-dev
 libpcl-dev
 qt5-default
 qttools5-dev-tools
