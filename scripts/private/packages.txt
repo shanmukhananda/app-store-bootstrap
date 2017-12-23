@@ -6,7 +6,9 @@ git
 libboost-all-dev
 libceres-dev
 libjsoncpp-dev
-libpcl-dev
+libvtk6-dev
+libvtk6-qt-dev
 qt5-default
 qttools5-dev-tools
+uftrace
 wget
