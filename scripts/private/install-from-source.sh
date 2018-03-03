@@ -61,8 +61,8 @@ install_googletest() {
 
 install_oclint() {
     cd ${packages_dir}/oclint
-    extracted_folder=oclint-0.13
-    archive_file=oclint-0.13-x86_64-linux-4.4.0-93-generic.tar.gz
+    extracted_folder=oclint-0.13.1
+    archive_file=oclint-0.13.1-x86_64-linux-4.4.0-112-generic.tar.gz
 
     if [ ! -e ${extracted_folder} ]
     then
@@ -77,9 +77,9 @@ install_oclint() {
 
 install_cv() {
     cd ${packages_dir}
-    opencv=opencv-3.3.1
-    archive_file_opencv=3.3.1.tar.gz
-    opencv_contrib=opencv_contrib-3.3.1
+    opencv=opencv-3.4.1
+    archive_file_opencv=3.4.1.tar.gz
+    opencv_contrib=opencv_contrib-3.4.1
 
     if [ ! -e ${opencv} ]
     then
