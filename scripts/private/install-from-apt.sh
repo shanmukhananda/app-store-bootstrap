@@ -7,8 +7,3 @@ apt-get update --fix-missing
 
 # Install packages
 apt-get install -y $(cat ${script_dir}/packages.txt)
-
-# Clean up
-apt-get -y autoremove
-apt-get -y autoclean
-rm -rf /var/lib/apt/lists/*

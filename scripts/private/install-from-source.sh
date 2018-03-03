@@ -30,9 +30,9 @@ download_file() {
 
 download_packages() {
     googletest_url=https://github.com/google/googletest/archive/release-1.8.0.tar.gz
-    oclint_url=https://github.com/oclint/oclint/releases/download/v0.13/oclint-0.13-x86_64-linux-4.4.0-93-generic.tar.gz
-    opencv_url=https://github.com/opencv/opencv/archive/3.3.1.tar.gz
-    opencv_contrib_url=https://github.com/opencv/opencv_contrib/archive/3.3.1.tar.gz
+    oclint_url=https://github.com/oclint/oclint/releases/download/v0.13.1/oclint-0.13.1-x86_64-linux-4.4.0-112-generic.tar.gz
+    opencv_url=https://github.com/opencv/opencv/archive/3.4.1.tar.gz
+    opencv_contrib_url=https://github.com/opencv/opencv_contrib/archive/3.4.1.tar.gz
 
     download_file googletest ${googletest_url}
     download_file oclint ${oclint_url}
